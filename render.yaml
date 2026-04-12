@@ -1,0 +1,49 @@
+# render.yaml — Deploy Phoenix Farm to Render
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+
+  # ── Backend API ────────────────────────────────────────────────────────────
+  - type: web
+    name: phoenix-farm-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npx prisma generate && npx prisma migrate deploy
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: DATABASE_URL
+        sync: false          # set manually in Render dashboard (Neon connection string)
+      - key: JWT_SECRET
+        generateValue: true  # Render auto-generates a secure random value
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false          # set to your frontend URL, e.g. https://phoenix-farm.onrender.com
+    healthCheckPath: /health
+    autoDeploy: true
+
+  # ── Frontend (static site) ─────────────────────────────────────────────────
+  - type: web
+    name: phoenix-farm-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false          # set to https://phoenix-farm-api.onrender.com/api
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html   # SPA fallback for React Router
+    autoDeploy: true
