@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Phoenix Farm — Standalone Migration
 
 This is the fully migrated version of the Phoenix Farm fish farm management system.
@@ -276,3 +277,6 @@ All endpoints require `Authorization: Bearer <token>` except `/api/auth/login`.
 | Deployment config | 3 files |
 
 **Total: 78+ files migrated or created from scratch.**
+=======
+# Phoenix-Farm
+>>>>>>> 44dfbffb8faa4db2367a43a870c82d3137607b90
