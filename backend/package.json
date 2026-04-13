@@ -6,11 +6,11 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "prisma:generate": "prisma generate",
-    "prisma:validate": "prisma validate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:deploy": "prisma migrate deploy",
-    "prisma:studio": "prisma studio",
+    "prisma:generate": "node node_modules/prisma/build/index.js generate",
+    "prisma:validate": "node node_modules/prisma/build/index.js validate",
+    "prisma:migrate": "node node_modules/prisma/build/index.js migrate dev",
+    "prisma:deploy": "node node_modules/prisma/build/index.js migrate deploy",
+    "prisma:studio": "node node_modules/prisma/build/index.js studio",
     "seed": "node prisma/seed.js"
   },
   "prisma": {
@@ -24,10 +24,10 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "prisma": "^5.11.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0",
-    "prisma": "^5.11.0"
+    "nodemon": "^3.1.0"
   }
 }
