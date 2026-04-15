@@ -1,0 +1,36 @@
+[
+  {
+    "date": "2026-04-05",
+    "treatmentType": "Hydrogen Peroxide",
+    "notes": "100 ml. tank no 36 - rasbora",
+    "systems": "[\"69bba20fc5786182442f2d7d\"]",
+    "staffName": "נטלי",
+    "concentration": 0.5,
+    "concentrationUnit": "mg/L",
+    "isActive": true,
+    "status": "Treated",
+    "id": "69d21299c8438e879d7a0f72",
+    "created_date": "2026-04-05T07:43:21.257000",
+    "updated_date": "2026-04-05T07:43:21.257000",
+    "created_by_id": "69a077bf27e4fc78664e7b18",
+    "created_by": "nataliekap1@gmail.com",
+    "is_sample": false
+  },
+  {
+    "date": "2026-03-18",
+    "treatmentType": "Hydrogen Peroxide",
+    "notes": null,
+    "systems": "[\"69b402793e6eb5f2dcbe6eac\",\"69b402793e6eb5f2dcbe6eae\"]",
+    "staffName": "NIR",
+    "concentration": 23000.0,
+    "concentrationUnit": "mg/L",
+    "isActive": true,
+    "status": "Monitoring",
+    "id": "69bad2dbfefd905a5b1ef7f4",
+    "created_date": "2026-03-18T16:29:15.655000",
+    "updated_date": "2026-03-26T11:33:16.372000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  }
+]

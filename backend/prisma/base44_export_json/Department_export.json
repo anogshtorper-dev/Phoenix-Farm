@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Grow-Out",
+    "notes": "Main fattening systems",
+    "gridRows": 6,
+    "gridColumns": 4,
+    "isActive": true,
+    "id": "6939cd656be03577a0a88ef0",
+    "created_date": "2025-12-10T19:43:33.485000",
+    "updated_date": "2025-12-10T19:43:33.485000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Breeding",
+    "notes": "Broodstock and larvae production",
+    "gridRows": 4,
+    "gridColumns": 3,
+    "isActive": true,
+    "id": "6939cd656be03577a0a88ef1",
+    "created_date": "2025-12-10T19:43:33.485000",
+    "updated_date": "2025-12-10T19:43:33.485000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Nursery",
+    "notes": "Juvenile fish development area",
+    "gridRows": 5,
+    "gridColumns": 5,
+    "isActive": true,
+    "id": "6939cd656be03577a0a88eef",
+    "created_date": "2025-12-10T19:43:33.485000",
+    "updated_date": "2025-12-10T19:43:33.485000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  }
+]

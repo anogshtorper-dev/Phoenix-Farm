@@ -1,0 +1,4 @@
+name,notes,gridRows,gridColumns,isActive,id,created_date,updated_date,created_by_id,created_by,is_sample
+"Grow-Out","Main fattening systems","6","4","true","6939cd656be03577a0a88ef0","2025-12-10T19:43:33.485000","2025-12-10T19:43:33.485000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"Breeding","Broodstock and larvae production","4","3","true","6939cd656be03577a0a88ef1","2025-12-10T19:43:33.485000","2025-12-10T19:43:33.485000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"Nursery","Juvenile fish development area","5","5","true","6939cd656be03577a0a88eef","2025-12-10T19:43:33.485000","2025-12-10T19:43:33.485000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
