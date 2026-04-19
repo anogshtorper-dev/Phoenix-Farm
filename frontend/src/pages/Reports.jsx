@@ -4,10 +4,7 @@
 // Kept exactly as original.
 import React from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import {
-  FileText, HeartPulse, Fish, Pill, CheckSquare,
-  ArrowLeft, LayoutDashboard, DollarSign, Layers,
-} from 'lucide-react';
+import { FileText, HeartPulse, Fish, Pill, SquareCheck as CheckSquare, ArrowLeft, LayoutDashboard, DollarSign, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';

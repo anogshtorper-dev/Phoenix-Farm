@@ -11,13 +11,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { useAuth } from '@/lib/AuthContext';
 import { Pond, PondGroup } from '@/api';
-import {
-  Droplets,
-  AlertTriangle,
-  Activity,
-  TrendingUp,
-  ArrowRight,
-} from 'lucide-react';
+import { Droplets, TriangleAlert as AlertTriangle, Activity, TrendingUp, ArrowRight } from 'lucide-react';
 
 export default function Home() {
   const { user } = useAuth();
