@@ -38,7 +38,7 @@ export default function Layout({ children, currentPageName }) {
   const NavigationContent = () => (
     <div className="flex flex-col h-full min-h-0">
       <div className="p-6 border-b">
-        <Link to={createPageUrl('Dashboard')} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
+        <Link to="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
           <img
             src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/132d88d10_PhoenixFarmLogo.jpg"
             alt="Phoenix Farm Logo"
@@ -106,7 +106,7 @@ export default function Layout({ children, currentPageName }) {
       {/* Mobile Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-[9999] bg-white border-b shadow-sm">
         <div className="flex items-center justify-between px-3 py-2.5">
-          <Link to={createPageUrl('Dashboard')} className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/132d88d10_PhoenixFarmLogo.jpg"
               alt="Phoenix Farm Logo"
