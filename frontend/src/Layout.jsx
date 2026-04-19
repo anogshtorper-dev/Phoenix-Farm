@@ -38,7 +38,7 @@ export default function Layout({ children, currentPageName }) {
   const NavigationContent = () => (
     <div className="flex flex-col h-full min-h-0">
       <div className="p-6 border-b">
-        <div className="flex items-center gap-3">
+        <Link to={createPageUrl('Dashboard')} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
           <img
             src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/132d88d10_PhoenixFarmLogo.jpg"
             alt="Phoenix Farm Logo"
@@ -48,7 +48,7 @@ export default function Layout({ children, currentPageName }) {
             <h1 className="text-xl font-bold text-teal-700">Phoenix Farm</h1>
             <p className="text-xs text-slate-600 mt-0.5">Pond Monitoring System</p>
           </div>
-        </div>
+        </Link>
       </div>
 
       <nav className="p-4 space-y-1 flex-1 min-h-0 overflow-y-auto">
@@ -106,14 +106,14 @@ export default function Layout({ children, currentPageName }) {
       {/* Mobile Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-[9999] bg-white border-b shadow-sm">
         <div className="flex items-center justify-between px-3 py-2.5">
-          <div className="flex items-center gap-2">
+          <Link to={createPageUrl('Dashboard')} className="flex items-center gap-2">
             <img
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/132d88d10_PhoenixFarmLogo.jpg"
               alt="Phoenix Farm Logo"
               className="w-8 h-8 object-contain"
             />
             <h1 className="text-base font-bold text-teal-700">Phoenix Farm</h1>
-          </div>
+          </Link>
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="h-9 w-9">
