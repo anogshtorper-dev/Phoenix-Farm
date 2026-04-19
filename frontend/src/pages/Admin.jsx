@@ -39,7 +39,7 @@ export default function Admin() {
 
   return (
     <div
-      className="min-h-screen p-6 bg-white relative flex items-center justify-center"
+      className="min-h-screen p-3 md:p-6 bg-white relative"
       style={{
         backgroundImage: `url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/0403c3f43_PhoenixFarmLogo.jpg')`,
         backgroundRepeat:     'no-repeat',
@@ -52,14 +52,16 @@ export default function Admin() {
       <div className="relative z-10 w-full">
         <div className="max-w-7xl mx-auto">
           <Tabs defaultValue="departments">
-            <TabsList>
-              <TabsTrigger value="departments">Departments</TabsTrigger>
-              <TabsTrigger value="ponds">Tanks</TabsTrigger>
-              <TabsTrigger value="species">Groups</TabsTrigger>
-              <TabsTrigger value="lines">Lines</TabsTrigger>
-              <TabsTrigger value="systems">Systems</TabsTrigger>
-              <TabsTrigger value="treatments">Treatments</TabsTrigger>
-            </TabsList>
+            <div className="overflow-x-auto mb-2">
+              <TabsList className="flex w-max min-w-full h-auto gap-1 p-1">
+                <TabsTrigger value="departments" className="text-xs md:text-sm whitespace-nowrap">Departments</TabsTrigger>
+                <TabsTrigger value="ponds" className="text-xs md:text-sm whitespace-nowrap">Tanks</TabsTrigger>
+                <TabsTrigger value="species" className="text-xs md:text-sm whitespace-nowrap">Groups</TabsTrigger>
+                <TabsTrigger value="lines" className="text-xs md:text-sm whitespace-nowrap">Lines</TabsTrigger>
+                <TabsTrigger value="systems" className="text-xs md:text-sm whitespace-nowrap">Systems</TabsTrigger>
+                <TabsTrigger value="treatments" className="text-xs md:text-sm whitespace-nowrap">Treatments</TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="departments">
               <DepartmentsManagement />

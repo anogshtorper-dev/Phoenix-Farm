@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, ExternalLink, Loader2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ExternalLink, Loader as Loader2 } from 'lucide-react';
 
 function isTiff(url) {
   const lower = url.toLowerCase().split('?')[0];

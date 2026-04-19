@@ -77,66 +77,66 @@ export default function Home() {
         backgroundAttachment: 'fixed',
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-slate-900 mb-4">Phoenix Farm</h1>
-          <p className="text-xl text-slate-600 mb-2">Fish Farm Management System</p>
-          <p className="text-sm text-slate-500">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div className="text-center mb-8 md:mb-12">
+          <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-3 md:mb-4">Phoenix Farm</h1>
+          <p className="text-base md:text-xl text-slate-600 mb-2">Fish Farm Management System</p>
+          <p className="text-xs md:text-sm text-slate-500">
             Real-time pond monitoring and water quality tracking
           </p>
         </div>
 
-        <div className="grid grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8 md:mb-12">
           <Card className="bg-white/80 backdrop-blur border-teal-100">
-            <CardContent className="pt-6">
+            <CardContent className="p-4 md:pt-6">
               <div className="flex items-center justify-between mb-2">
-                <Droplets className="w-8 h-8 text-teal-600" />
-                <span className="text-3xl font-bold text-slate-900">{stats.total}</span>
+                <Droplets className="w-6 h-6 md:w-8 md:h-8 text-teal-600" />
+                <span className="text-2xl md:text-3xl font-bold text-slate-900">{stats.total}</span>
               </div>
-              <p className="text-sm text-slate-600 font-medium">Total Ponds</p>
+              <p className="text-xs md:text-sm text-slate-600 font-medium">Total Ponds</p>
             </CardContent>
           </Card>
 
           <Card className="bg-white/80 backdrop-blur border-green-100">
-            <CardContent className="pt-6">
+            <CardContent className="p-4 md:pt-6">
               <div className="flex items-center justify-between mb-2">
-                <Activity className="w-8 h-8 text-green-600" />
-                <span className="text-3xl font-bold text-slate-900">{stats.normal}</span>
+                <Activity className="w-6 h-6 md:w-8 md:h-8 text-green-600" />
+                <span className="text-2xl md:text-3xl font-bold text-slate-900">{stats.normal}</span>
               </div>
-              <p className="text-sm text-slate-600 font-medium">Normal Status</p>
+              <p className="text-xs md:text-sm text-slate-600 font-medium">Normal Status</p>
             </CardContent>
           </Card>
 
           <Card className="bg-white/80 backdrop-blur border-red-100">
-            <CardContent className="pt-6">
+            <CardContent className="p-4 md:pt-6">
               <div className="flex items-center justify-between mb-2">
-                <AlertTriangle className="w-8 h-8 text-red-600" />
-                <span className="text-3xl font-bold text-slate-900">{stats.abnormal}</span>
+                <AlertTriangle className="w-6 h-6 md:w-8 md:h-8 text-red-600" />
+                <span className="text-2xl md:text-3xl font-bold text-slate-900">{stats.abnormal}</span>
               </div>
-              <p className="text-sm text-slate-600 font-medium">Abnormal Metrics</p>
+              <p className="text-xs md:text-sm text-slate-600 font-medium">Abnormal</p>
             </CardContent>
           </Card>
 
           <Card className="bg-white/80 backdrop-blur border-orange-100">
-            <CardContent className="pt-6">
+            <CardContent className="p-4 md:pt-6">
               <div className="flex items-center justify-between mb-2">
-                <TrendingUp className="w-8 h-8 text-orange-600" />
-                <span className="text-3xl font-bold text-slate-900">{stats.outdated}</span>
+                <TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-orange-600" />
+                <span className="text-2xl md:text-3xl font-bold text-slate-900">{stats.outdated}</span>
               </div>
-              <p className="text-sm text-slate-600 font-medium">Needs Update</p>
+              <p className="text-xs md:text-sm text-slate-600 font-medium">Needs Update</p>
             </CardContent>
           </Card>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           <Card className="bg-gradient-to-br from-teal-500 to-teal-600 text-white border-0">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Monitor Your Ponds</h3>
-              <p className="text-teal-50 mb-6">
+            <CardContent className="p-5 md:p-8">
+              <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4">Monitor Your Ponds</h3>
+              <p className="text-teal-50 text-sm md:text-base mb-4 md:mb-6">
                 View real-time status of all ponds with color-coded alerts and detailed metrics
               </p>
               <Link to={createPageUrl('Dashboard')}>
-                <Button className="bg-white text-teal-600 hover:bg-teal-50">
+                <Button className="bg-white text-teal-600 hover:bg-teal-50 text-sm">
                   Go to Dashboard
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -145,13 +145,13 @@ export default function Home() {
           </Card>
 
           <Card className="bg-gradient-to-br from-slate-700 to-slate-800 text-white border-0">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">View Active Alerts</h3>
-              <p className="text-slate-300 mb-6">
+            <CardContent className="p-5 md:p-8">
+              <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4">View Active Alerts</h3>
+              <p className="text-slate-300 text-sm md:text-base mb-4 md:mb-6">
                 Quick access to all abnormal readings and ponds requiring attention
               </p>
               <Link to={createPageUrl('Alerts')}>
-                <Button className="bg-white text-slate-800 hover:bg-slate-100">
+                <Button className="bg-white text-slate-800 hover:bg-slate-100 text-sm">
                   View Alerts
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

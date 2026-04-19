@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
-import { Plus, Edit, Trash2, ChevronDown, ChevronRight, Search } from 'lucide-react';
+import { Plus, CreditCard as Edit, Trash2, ChevronDown, ChevronRight, Search } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Pond, Department, PondGroup, RASSystem } from '@/api';
 

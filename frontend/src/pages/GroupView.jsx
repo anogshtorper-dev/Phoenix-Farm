@@ -173,7 +173,7 @@ export default function GroupView() {
 
   return (
     <div
-      className="min-h-screen p-2 sm:p-6 bg-white relative flex items-center justify-center"
+      className="min-h-screen p-2 sm:p-6 bg-white relative"
       style={{
         backgroundImage: `url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/0403c3f43_PhoenixFarmLogo.jpg')`,
         backgroundRepeat: 'no-repeat', backgroundPosition: 'center',

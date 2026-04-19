@@ -9,19 +9,7 @@ import { createPageUrl } from '@/utils';
 import { useAuth } from '@/lib/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import {
-  LayoutDashboard,
-  AlertTriangle,
-  Droplets,
-  FileText,
-  History as HistoryIcon,
-  Calculator,
-  Settings,
-  Menu,
-  Fish,
-  CheckSquare,
-  HeartPulse,
-} from 'lucide-react';
+import { LayoutDashboard, TriangleAlert as AlertTriangle, Droplets, FileText, History as HistoryIcon, Calculator, Settings, Menu, Fish, SquareCheck as CheckSquare, HeartPulse } from 'lucide-react';
 
 export default function Layout({ children, currentPageName }) {
   const { user, logout } = useAuth();
@@ -109,30 +97,30 @@ export default function Layout({ children, currentPageName }) {
   );
 
   return (
-    <div className="flex bg-white">
+    <div className="flex bg-white min-h-screen">
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex md:flex-col w-64 bg-white border-r shadow-sm h-screen overflow-hidden sticky top-0">
+      <aside className="hidden md:flex md:flex-col w-64 bg-white border-r shadow-sm h-screen overflow-hidden sticky top-0 shrink-0">
         <NavigationContent />
       </aside>
 
       {/* Mobile Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-[9999] bg-white border-b shadow-sm">
-        <div className="flex items-center justify-between p-4">
+        <div className="flex items-center justify-between px-3 py-2.5">
           <div className="flex items-center gap-2">
             <img
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/132d88d10_PhoenixFarmLogo.jpg"
               alt="Phoenix Farm Logo"
               className="w-8 h-8 object-contain"
             />
-            <h1 className="text-lg font-bold text-teal-700">Phoenix Farm</h1>
+            <h1 className="text-base font-bold text-teal-700">Phoenix Farm</h1>
           </div>
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="w-6 h-6" />
+              <Button variant="ghost" size="icon" className="h-9 w-9">
+                <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64 p-0">
+            <SheetContent side="right" className="w-72 p-0">
               <div className="flex flex-col h-full overflow-y-auto">
                 <NavigationContent />
               </div>
@@ -141,7 +129,7 @@ export default function Layout({ children, currentPageName }) {
         </div>
       </div>
 
-      <main className="flex-1 md:pt-0 pt-16 pb-16">
+      <main className="flex-1 md:pt-0 pt-14 min-w-0 overflow-x-hidden">
         {children}
       </main>
     </div>

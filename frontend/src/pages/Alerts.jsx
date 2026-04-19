@@ -11,7 +11,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, AlertTriangle, CheckCircle2, Clock } from 'lucide-react';
+import { ArrowLeft, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle2, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { useAuth } from '@/lib/AuthContext';
@@ -195,7 +195,7 @@ export default function Alerts() {
 
   return (
     <div
-      className="min-h-screen p-6 bg-white relative flex items-center justify-center"
+      className="min-h-screen p-3 md:p-6 bg-white relative"
       style={{
         backgroundImage: `url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/0403c3f43_PhoenixFarmLogo.jpg')`,
         backgroundRepeat:   'no-repeat',
@@ -209,30 +209,30 @@ export default function Alerts() {
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-4 mb-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-3 md:p-4 mb-4 md:mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div className="flex items-center gap-2 md:gap-4 min-w-0">
                 <Link to={createPageUrl('Dashboard')}>
-                  <Button variant="ghost" size="sm">
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back
+                  <Button variant="ghost" size="sm" className="shrink-0">
+                    <ArrowLeft className="w-4 h-4 mr-1 md:mr-2" />
+                    <span className="hidden sm:inline">Back</span>
                   </Button>
                 </Link>
-                <AlertTriangle className="w-7 h-7 text-yellow-600" />
-                <div>
-                  <h1 className="text-2xl font-bold text-slate-900">Active Alerts</h1>
-                  <p className="text-sm text-slate-600">{alerts.length} alerts require attention</p>
+                <AlertTriangle className="w-5 h-5 md:w-7 md:h-7 text-yellow-600 shrink-0" />
+                <div className="min-w-0">
+                  <h1 className="text-lg md:text-2xl font-bold text-slate-900">Active Alerts</h1>
+                  <p className="text-xs md:text-sm text-slate-600">{alerts.length} alerts require attention</p>
                 </div>
               </div>
               {alerts.filter((a) => a.metricType !== 'outdated').length > 0 && user?.role === 'admin' && (
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-red-300 text-red-600 hover:bg-red-50"
+                  className="border-red-300 text-red-600 hover:bg-red-50 self-start sm:self-auto shrink-0"
                   onClick={() => setShowAckAllDialog(true)}
                 >
-                  <CheckCircle2 className="w-4 h-4 mr-2" />
-                  Acknowledge All
+                  <CheckCircle2 className="w-4 h-4 mr-1 md:mr-2" />
+                  <span className="text-xs md:text-sm">Acknowledge All</span>
                 </Button>
               )}
             </div>
@@ -258,7 +258,7 @@ export default function Alerts() {
                         <div className="flex items-center gap-3">
                           <AlertTriangle className="w-5 h-5 text-red-500" />
                           <div>
-                            <CardTitle className="text-lg">System {alert.systemName}</CardTitle>
+                            <CardTitle className="text-base md:text-lg">System {alert.systemName}</CardTitle>
                             <p className="text-sm text-slate-600">{systemPonds.length} ponds affected</p>
                           </div>
                         </div>
@@ -268,7 +268,7 @@ export default function Alerts() {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                         <div>
                           {alert.metricType === 'outdated' ? (
                             <p className="text-slate-700">
@@ -307,6 +307,7 @@ export default function Alerts() {
                             variant="outline"
                             onClick={() => handleAcknowledge(alert)}
                             disabled={user?.role !== 'admin'}
+                            className="self-start sm:self-auto"
                           >
                             Acknowledge
                           </Button>

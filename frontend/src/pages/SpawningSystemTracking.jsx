@@ -162,34 +162,34 @@ export default function SpawningSystemTracking() {
   return (
     <div className="min-h-screen p-3 md:p-6 bg-white">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-4 mb-6">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
+        <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-3 md:p-4 mb-4 md:mb-6">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2 md:gap-3 min-w-0">
               <Link to={createPageUrl('Dashboard')}>
-                <Button variant="ghost" size="sm"><ArrowLeft className="w-4 h-4 mr-1" />Back</Button>
+                <Button variant="ghost" size="sm" className="shrink-0"><ArrowLeft className="w-4 h-4 mr-1" /><span className="hidden sm:inline">Back</span></Button>
               </Link>
-              <Fish className="w-6 h-6 text-orange-500" />
-              <div>
-                <h1 className="text-lg font-bold text-slate-900">Spawning System</h1>
-                <p className="text-xs text-slate-500">Track spawning events and batch information</p>
+              <Fish className="w-5 h-5 md:w-6 md:h-6 text-orange-500 shrink-0" />
+              <div className="min-w-0">
+                <h1 className="text-base md:text-lg font-bold text-slate-900">Spawning System</h1>
+                <p className="text-xs text-slate-500 hidden sm:block">Track spawning events and batch information</p>
               </div>
             </div>
-            <Button onClick={openNew} className="bg-teal-600 hover:bg-teal-700" size="sm">
-              <Plus className="w-4 h-4 mr-1" /> New Event
+            <Button onClick={openNew} className="bg-teal-600 hover:bg-teal-700 shrink-0" size="sm">
+              <Plus className="w-4 h-4 md:mr-1" /> <span className="hidden sm:inline">New Event</span>
             </Button>
           </div>
         </div>
 
-        <Card className="mb-6">
-          <CardContent className="pt-4">
-            <div className="flex flex-wrap gap-4 items-end">
+        <Card className="mb-4 md:mb-6">
+          <CardContent className="pt-3 md:pt-4">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 items-end">
               <div>
                 <Label className="text-sm font-medium mb-2 block">Date From</Label>
-                <Input type="date" value={dateFrom} onChange={e => setDateFrom(e.target.value)} className="w-40 text-sm" />
+                <Input type="date" value={dateFrom} onChange={e => setDateFrom(e.target.value)} className="text-sm" />
               </div>
               <div>
                 <Label className="text-sm font-medium mb-2 block">Date To</Label>
-                <Input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)} className="w-40 text-sm" />
+                <Input type="date" value={dateTo} onChange={e => setDateTo(e.target.value)} className="text-sm" />
               </div>
               {(dateFrom || dateTo) && (
                 <Button variant="outline" size="sm" onClick={() => { setDateFrom(''); setDateTo(''); }}>Clear</Button>
@@ -301,7 +301,7 @@ export default function SpawningSystemTracking() {
               <Button variant="ghost" size="sm" onClick={() => setModalOpen(false)}>✕</Button>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label className="text-sm font-medium">Date *</Label>
                   <Input type="date" value={form.date} onChange={e => set('date', e.target.value)} max={new Date().toISOString().split('T')[0]} className="text-sm" />

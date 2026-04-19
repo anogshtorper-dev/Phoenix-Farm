@@ -178,18 +178,18 @@ export default function HealthTreatments() {
         <div className="max-w-4xl mx-auto">
 
           {/* Header */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-4 mb-6">
-            <div className="flex items-center justify-between gap-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-3 md:p-4 mb-4 md:mb-6">
+            <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2 min-w-0">
                 <Link to={createPageUrl('Dashboard')}>
                   <Button variant="ghost" size="sm" className="shrink-0">
-                    <ArrowLeft className="w-4 h-4 mr-1" />Back
+                    <ArrowLeft className="w-4 h-4 mr-1" /><span className="hidden sm:inline">Back</span>
                   </Button>
                 </Link>
-                <HeartPulse className="w-6 h-6 text-rose-500 shrink-0" />
+                <HeartPulse className="w-5 h-5 md:w-6 md:h-6 text-rose-500 shrink-0" />
                 <div className="min-w-0">
-                  <h1 className="text-lg font-bold text-slate-900 leading-tight">Health & Treatments</h1>
-                  <p className="text-xs text-slate-500">Fish health sampling records</p>
+                  <h1 className="text-base md:text-lg font-bold text-slate-900 leading-tight">Health & Treatments</h1>
+                  <p className="text-xs text-slate-500 hidden sm:block">Fish health sampling records</p>
                 </div>
               </div>
               <Button
@@ -197,8 +197,8 @@ export default function HealthTreatments() {
                 className="bg-teal-600 hover:bg-teal-700 shrink-0"
                 size="sm"
               >
-                <Plus className="w-4 h-4 mr-1" />
-                New {view === 'samples' ? 'Sample' : 'Treatment'}
+                <Plus className="w-4 h-4 md:mr-1" />
+                <span className="hidden sm:inline">New {view === 'samples' ? 'Sample' : 'Treatment'}</span>
               </Button>
             </div>
           </div>

@@ -225,7 +225,7 @@ export default function Dashboard() {
 
   return (
     <div
-      className="min-h-screen p-3 md:p-6 bg-white relative flex items-center justify-center overflow-x-hidden"
+      className="min-h-screen p-2 md:p-6 bg-white relative flex items-center justify-center overflow-x-hidden"
       style={{
         backgroundImage: `url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/0403c3f43_PhoenixFarmLogo.jpg')`,
         backgroundRepeat: 'no-repeat',
@@ -238,24 +238,24 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto relative z-10 w-full">
 
         {/* KPIs */}
-        <div className="grid grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
-          <div className="bg-white rounded-lg shadow-sm border p-3 md:p-4">
-            <p className="text-xs md:text-sm text-slate-600 mb-1">Total Tanks</p>
-            <p className="text-xl md:text-2xl font-bold text-slate-900">{allPonds.length}</p>
+        <div className="grid grid-cols-3 gap-2 md:gap-4 mb-3 md:mb-6">
+          <div className="bg-white rounded-lg shadow-sm border p-2 md:p-4">
+            <p className="text-xs text-slate-600 mb-0.5 leading-tight">Total Tanks</p>
+            <p className="text-lg md:text-2xl font-bold text-slate-900">{allPonds.length}</p>
           </div>
           <div
-            className="bg-white rounded-lg shadow-sm border p-3 md:p-4 cursor-pointer hover:bg-red-50 hover:border-red-300 transition-colors"
+            className="bg-white rounded-lg shadow-sm border p-2 md:p-4 cursor-pointer hover:bg-red-50 hover:border-red-300 transition-colors"
             onClick={() => navigate(createPageUrl('Alerts'))}
           >
-            <p className="text-xs md:text-sm text-slate-600 mb-1">Open Alerts</p>
-            <p className="text-xl md:text-2xl font-bold text-red-600">{openAlertsCount}</p>
+            <p className="text-xs text-slate-600 mb-0.5 leading-tight">Open Alerts</p>
+            <p className="text-lg md:text-2xl font-bold text-red-600">{openAlertsCount}</p>
           </div>
           <div
-            className="bg-white rounded-lg shadow-sm border p-3 md:p-4 cursor-pointer hover:bg-orange-50 hover:border-orange-300 transition-colors"
+            className="bg-white rounded-lg shadow-sm border p-2 md:p-4 cursor-pointer hover:bg-orange-50 hover:border-orange-300 transition-colors"
             onClick={() => setOutdatedFilter(true)}
           >
-            <p className="text-xs md:text-sm text-slate-600 mb-1">Not Updated +7 Days</p>
-            <p className="text-xl md:text-2xl font-bold text-orange-600">{outdatedPonds.length}</p>
+            <p className="text-xs text-slate-600 mb-0.5 leading-tight">&gt;7 Days</p>
+            <p className="text-lg md:text-2xl font-bold text-orange-600">{outdatedPonds.length}</p>
           </div>
         </div>
 
@@ -263,9 +263,9 @@ export default function Dashboard() {
           value={selectedSystem?.id}
           onValueChange={(id) => setSelectedSystem(systems.find((s) => s.id === id))}
         >
-          <TabsList className="mb-4 md:mb-6 w-full flex-wrap h-auto gap-2 grid grid-cols-2 md:grid-cols-4">
+          <TabsList className="mb-3 md:mb-6 w-full flex-wrap h-auto gap-1 md:gap-2 grid grid-cols-2 md:grid-cols-4">
             {systems.map((sys) => (
-              <TabsTrigger key={sys.id} value={sys.id} className="flex-1 min-w-[120px]">
+              <TabsTrigger key={sys.id} value={sys.id} className="flex-1 text-xs md:text-sm px-2 py-1.5 md:py-2">
                 {sys.systemName.replace(/\bSystem\b/gi, '').trim()}
               </TabsTrigger>
             ))}
@@ -273,31 +273,33 @@ export default function Dashboard() {
 
           {systems.map((sys) => (
             <TabsContent key={sys.id} value={sys.id}>
-              <div className="bg-white rounded-xl shadow-sm border p-3 md:p-6">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 md:mb-6">
-                  <div>
-                    <h2 className="text-lg md:text-xl font-semibold text-slate-900">
-                      {sys.systemName.replace(/\bSystem\b/gi, '').trim()}
-                    </h2>
-                    <p className="text-xs md:text-sm text-slate-600">
-                      Code: {sys.systemCode} | Volume: {sys.systemVolume || 'N/A'} liters
-                    </p>
+              <div className="bg-white rounded-xl shadow-sm border p-2 md:p-6">
+                <div className="flex flex-col gap-2 md:gap-4 mb-3 md:mb-6">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <h2 className="text-base md:text-xl font-semibold text-slate-900 truncate">
+                        {sys.systemName.replace(/\bSystem\b/gi, '').trim()}
+                      </h2>
+                      <p className="text-xs text-slate-600 truncate">
+                        {sys.systemCode} · {sys.systemVolume || 'N/A'} L
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs shrink-0">
+                      <div className="flex items-center gap-1">
+                        <div className="w-2 h-2 rounded-full bg-green-500" />
+                        <span className="text-slate-600 hidden sm:inline">Normal</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <div className="w-2 h-2 rounded-full bg-orange-500" />
+                        <span className="text-slate-600">&gt;7d</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <div className="w-2 h-2 rounded-full bg-red-500" />
+                        <span className="text-slate-600 hidden sm:inline">Abnormal</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-xs flex-wrap">
-                    <div className="flex items-center gap-1">
-                      <div className="w-2 h-2 rounded-full bg-green-500" />
-                      <span className="text-slate-600">Normal</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <div className="w-2 h-2 rounded-full bg-orange-500" />
-                      <span className="text-slate-600">&gt;7d</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <div className="w-2 h-2 rounded-full bg-red-500" />
-                      <span className="text-slate-600">Abnormal</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1.5 flex-wrap">
                     {!isEditMode ? (
                       <>
                         <Button
@@ -347,11 +349,11 @@ export default function Dashboard() {
                         </Button>
                       </>
                     )}
-                  </div>
+                    </div>
                 </div>
 
                 {outdatedFilter && (
-                  <div className="mb-4 flex items-center justify-between bg-orange-50 border border-orange-300 rounded-lg px-4 py-2">
+                  <div className="mb-3 flex items-center justify-between bg-orange-50 border border-orange-300 rounded-lg px-3 py-2">
                     <span className="text-sm font-medium text-orange-700">
                       🔶 Showing only tanks not updated for more than 7 days
                     </span>
@@ -366,15 +368,15 @@ export default function Dashboard() {
                   </div>
                 )}
 
-                <div className="mb-4">
+                <div className="mb-3">
                   <div className="relative">
                     <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
                     <Input
                       type="text"
-                      placeholder="Search by tank number..."
+                      placeholder="Search tank..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pr-10"
+                      className="pr-10 h-9 text-sm"
                     />
                   </div>
                 </div>
@@ -437,8 +439,8 @@ export default function Dashboard() {
                     </Droppable>
                   </DragDropContext>
                 ) : (
-                  <div className="overflow-x-auto">
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 min-w-[320px]">
+                  <div>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-4">
                       {ponds
                         .filter((pond) => {
                           const matchesSearch = pond.number
@@ -461,7 +463,7 @@ export default function Dashboard() {
                             <div
                               key={pond.id}
                               onClick={() => setSelectedPond(pond)}
-                              className={`p-3 md:p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
+                              className={`p-2 md:p-4 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
                                 status === 'normal'   ? 'border-green-500 bg-green-50'   :
                                 status === 'outdated' ? 'border-orange-500 bg-orange-50' :
                                                         'border-red-500 bg-red-50'
@@ -539,7 +541,7 @@ export default function Dashboard() {
                       {user?.role === 'admin' && !isEditMode && (
                         <div
                           onClick={() => setShowAddPondModal(true)}
-                          className="p-3 md:p-4 border-2 border-dashed border-teal-400 rounded-lg cursor-pointer transition-all hover:shadow-md hover:border-teal-600 hover:bg-teal-50 flex items-center justify-center min-h-[180px]"
+                          className="p-2 md:p-4 border-2 border-dashed border-teal-400 rounded-lg cursor-pointer transition-all hover:shadow-md hover:border-teal-600 hover:bg-teal-50 flex items-center justify-center min-h-[100px] md:min-h-[180px]"
                         >
                           <div className="text-center">
                             <Plus className="w-12 h-12 mx-auto text-teal-600 mb-2" />

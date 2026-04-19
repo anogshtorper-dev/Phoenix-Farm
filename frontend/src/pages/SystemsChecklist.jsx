@@ -14,7 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { CheckSquare, Save, ArrowLeft } from 'lucide-react';
+import { SquareCheck as CheckSquare, Save, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { useToast } from '@/components/ui/use-toast';
@@ -129,7 +129,7 @@ export default function SystemsChecklist() {
 
   return (
     <div
-      className="min-h-screen p-6 bg-white relative flex items-center justify-center"
+      className="min-h-screen p-3 md:p-6 bg-white relative"
       style={{
         backgroundImage: `url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/0403c3f43_PhoenixFarmLogo.jpg')`,
         backgroundRepeat:     'no-repeat',
@@ -143,25 +143,26 @@ export default function SystemsChecklist() {
         <div className="max-w-3xl mx-auto">
 
           {/* Header */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-4 mb-6">
-            <div className="flex items-center gap-3">
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-3 md:p-4 mb-4 md:mb-6">
+            <div className="flex items-center gap-2 md:gap-3">
               <Link to={createPageUrl('Dashboard')}>
-                <Button variant="ghost" size="sm">
-                  <ArrowLeft className="w-4 h-4 mr-2" />Back
+                <Button variant="ghost" size="sm" className="shrink-0">
+                  <ArrowLeft className="w-4 h-4 mr-1" />
+                  <span className="hidden sm:inline">Back</span>
                 </Button>
               </Link>
-              <CheckSquare className="w-6 h-6 text-green-600" />
-              <div>
-                <h1 className="text-2xl font-bold text-slate-900">Systems Checklist</h1>
-                <p className="text-sm text-slate-500">Daily systems inspection form</p>
+              <CheckSquare className="w-5 h-5 md:w-6 md:h-6 text-green-600 shrink-0" />
+              <div className="min-w-0">
+                <h1 className="text-lg md:text-2xl font-bold text-slate-900">Systems Checklist</h1>
+                <p className="text-xs md:text-sm text-slate-500">Daily systems inspection form</p>
               </div>
             </div>
           </div>
 
           {/* Date + Staff */}
-          <Card className="mb-6">
-            <CardContent className="pt-6">
-              <div className="grid grid-cols-2 gap-4">
+          <Card className="mb-4 md:mb-6">
+            <CardContent className="pt-4 md:pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label>Date *</Label>
                   <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
@@ -185,8 +186,8 @@ export default function SystemsChecklist() {
             </CardHeader>
             <CardContent className="space-y-4">
               {CHECKLIST_ITEMS.map((item) => (
-                <div key={item.key} className="border rounded-lg p-4 bg-white">
-                  <div className="flex items-center justify-between mb-3">
+                <div key={item.key} className="border rounded-lg p-3 md:p-4 bg-white">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                     <span className="font-medium text-slate-800">{item.label}</span>
 
                     {item.type === 'numeric' ? (

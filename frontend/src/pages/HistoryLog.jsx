@@ -85,7 +85,7 @@ export default function HistoryLog() {
 
   return (
     <div
-      className="min-h-screen p-6 bg-white relative flex items-center justify-center"
+      className="min-h-screen p-3 md:p-6 bg-white relative"
       style={{
         backgroundImage: `url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/0403c3f43_PhoenixFarmLogo.jpg')`,
         backgroundRepeat:     'no-repeat',
@@ -99,22 +99,24 @@ export default function HistoryLog() {
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-4 mb-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-3 md:p-4 mb-4 md:mb-6">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2 md:gap-4 min-w-0">
                 <Link to={createPageUrl('Dashboard')}>
-                  <Button variant="ghost" size="sm">
-                    <ArrowLeft className="w-4 h-4 mr-2" />Back
+                  <Button variant="ghost" size="sm" className="shrink-0">
+                    <ArrowLeft className="w-4 h-4 mr-1" />
+                    <span className="hidden sm:inline">Back</span>
                   </Button>
                 </Link>
-                <HistoryIcon className="w-7 h-7 text-slate-600" />
-                <div>
-                  <h1 className="text-2xl font-bold text-slate-900">History Log</h1>
-                  <p className="text-sm text-slate-600">System audit trail</p>
+                <HistoryIcon className="w-5 h-5 md:w-7 md:h-7 text-slate-600 shrink-0" />
+                <div className="min-w-0">
+                  <h1 className="text-lg md:text-2xl font-bold text-slate-900">History Log</h1>
+                  <p className="text-xs md:text-sm text-slate-600">System audit trail</p>
                 </div>
               </div>
-              <Button onClick={exportToCSV} className="bg-teal-600 hover:bg-teal-700">
-                <Download className="w-4 h-4 mr-2" />Export to CSV
+              <Button onClick={exportToCSV} size="sm" className="bg-teal-600 hover:bg-teal-700 shrink-0">
+                <Download className="w-4 h-4 md:mr-2" />
+                <span className="hidden md:inline">Export to CSV</span>
               </Button>
             </div>
           </div>

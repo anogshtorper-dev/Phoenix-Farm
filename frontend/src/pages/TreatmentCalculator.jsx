@@ -87,7 +87,7 @@ export default function TreatmentCalculator() {
 
   return (
     <div
-      className="min-h-screen p-6 bg-white relative flex items-center justify-center"
+      className="min-h-screen p-3 md:p-6 bg-white relative"
       style={{
         backgroundImage: `url('https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6939cb8e222f808c3d88aea8/0403c3f43_PhoenixFarmLogo.jpg')`,
         backgroundRepeat:     'no-repeat',
@@ -101,17 +101,18 @@ export default function TreatmentCalculator() {
         <div className="max-w-3xl mx-auto">
 
           {/* Header */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-4 mb-6">
-            <div className="flex items-center gap-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-3 md:p-4 mb-4 md:mb-6">
+            <div className="flex items-center gap-2 md:gap-4">
               <Link to={createPageUrl('Dashboard')}>
-                <Button variant="ghost" size="sm">
-                  <ArrowLeft className="w-4 h-4 mr-2" />Back
+                <Button variant="ghost" size="sm" className="shrink-0">
+                  <ArrowLeft className="w-4 h-4 mr-1" />
+                  <span className="hidden sm:inline">Back</span>
                 </Button>
               </Link>
-              <Calculator className="w-7 h-7 text-yellow-500" />
-              <div>
-                <h1 className="text-2xl font-bold text-slate-900">Treatment Calculator</h1>
-                <p className="text-sm text-slate-600">Calculate treatment amounts for RAS systems</p>
+              <Calculator className="w-5 h-5 md:w-7 md:h-7 text-yellow-500 shrink-0" />
+              <div className="min-w-0">
+                <h1 className="text-lg md:text-2xl font-bold text-slate-900">Treatment Calculator</h1>
+                <p className="text-xs md:text-sm text-slate-600">Calculate treatment amounts for RAS systems</p>
               </div>
             </div>
           </div>
@@ -174,7 +175,7 @@ export default function TreatmentCalculator() {
 
               {/* Name + concentration inputs */}
               {(selectedPreset === 'custom' || selectedPreset) && (
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <Label>Treatment Name</Label>
                     <Input

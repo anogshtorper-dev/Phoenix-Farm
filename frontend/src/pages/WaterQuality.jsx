@@ -148,31 +148,32 @@ export default function WaterQuality() {
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-4 mb-6">
-            <div className="flex items-center gap-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border p-3 md:p-4 mb-4 md:mb-6">
+            <div className="flex items-center gap-2 md:gap-4">
               <Link to={createPageUrl('Dashboard')}>
-                <Button variant="ghost" size="sm">
-                  <ArrowLeft className="w-4 h-4 mr-2" />Back
+                <Button variant="ghost" size="sm" className="shrink-0">
+                  <ArrowLeft className="w-4 h-4 mr-1" />
+                  <span className="hidden sm:inline">Back</span>
                 </Button>
               </Link>
-              <Droplets className="w-7 h-7 text-blue-500" />
-              <div>
-                <h1 className="text-2xl font-bold text-slate-900">Water Quality</h1>
-                <p className="text-sm text-slate-600">Historical data and trends</p>
+              <Droplets className="w-5 h-5 md:w-7 md:h-7 text-blue-500 shrink-0" />
+              <div className="min-w-0">
+                <h1 className="text-lg md:text-2xl font-bold text-slate-900">Water Quality</h1>
+                <p className="text-xs md:text-sm text-slate-600">Historical data and trends</p>
               </div>
             </div>
           </div>
 
           {/* Tab switcher */}
-          <div className="flex gap-1 p-1 bg-slate-100 rounded-lg w-fit mb-6">
+          <div className="flex gap-1 p-1 bg-slate-100 rounded-lg w-full sm:w-fit mb-4 md:mb-6">
             {[
-              { id: 'trends',     label: 'Trends',              icon: <Droplets className="w-4 h-4" /> },
-              { id: 'comparison', label: 'Systems Comparison',  icon: <GitCompareArrows className="w-4 h-4" /> },
+              { id: 'trends',     label: 'Trends',        icon: <Droplets className="w-4 h-4" /> },
+              { id: 'comparison', label: 'Comparison',    icon: <GitCompareArrows className="w-4 h-4" /> },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`flex flex-1 sm:flex-none items-center justify-center gap-1 md:gap-2 px-3 md:px-4 py-2 rounded-md text-xs md:text-sm font-medium transition-colors ${
                   activeTab === tab.id
                     ? 'bg-white shadow-sm text-slate-900'
                     : 'text-slate-600 hover:text-slate-900'
@@ -317,7 +318,7 @@ export default function WaterQuality() {
                   </CardHeader>
                   <CardContent>
                     {chartData.length > 0 ? (
-                      <ResponsiveContainer width="100%" height={400}>
+                      <ResponsiveContainer width="100%" height={280}>
                         <LineChart data={chartData}>
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="date" />

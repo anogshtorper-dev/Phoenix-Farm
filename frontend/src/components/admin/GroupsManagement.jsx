@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Plus, Edit, Trash2 } from 'lucide-react';
+import { Plus, CreditCard as Edit, Trash2 } from 'lucide-react';
 import { PondGroup, Department } from '@/api';
 
 const DEFAULT_FORM = { name: '', departmentId: '', notes: '', tempMin: 24, tempMax: 28, phMin: 6.8, phMax: 7.5, salinityMin: 30, salinityMax: 35 };
