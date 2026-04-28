@@ -1,0 +1,167 @@
+[
+  {
+    "name": "Guppy",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e84a",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Swordtail",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e84b",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Platy",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e84c",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Molly",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e84d",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Ancistrus",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e84e",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Rasbora",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e84f",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Gourami",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e850",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Corydoras",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e851",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Tetra",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e852",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "White Cloud",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e853",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Barbs",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e854",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Rainbow Fish",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e855",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Zebrafish",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e856",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Shrimp",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e857",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Scalar",
+    "isActive": true,
+    "notes": null,
+    "id": "69b4146cff178518af15e858",
+    "created_date": "2026-03-13T13:43:08.120000",
+    "updated_date": "2026-03-13T13:43:08.120000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  }
+]

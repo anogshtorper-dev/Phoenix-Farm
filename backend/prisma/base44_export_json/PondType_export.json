@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Broodstock",
+    "notes": "Breeding stock tanks",
+    "id": "6939cd656be03577a0a88ef6",
+    "created_date": "2025-12-10T19:43:33.493000",
+    "updated_date": "2025-12-10T19:43:33.493000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Larvae/Fry",
+    "notes": "Young fish development",
+    "id": "6939cd656be03577a0a88ef7",
+    "created_date": "2025-12-10T19:43:33.493000",
+    "updated_date": "2025-12-10T19:43:33.493000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Grow-out",
+    "notes": "Fattening to market size",
+    "id": "6939cd656be03577a0a88ef8",
+    "created_date": "2025-12-10T19:43:33.493000",
+    "updated_date": "2025-12-10T19:43:33.493000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  }
+]
