@@ -1,0 +1,12 @@
+systemVolume,notes,systemName,isActive,systemCode,sortOrder,id,created_date,updated_date,created_by_id,created_by,is_sample
+"55000","","Fattening System 4","true","FS4","3","69bba22c5e6f95b27480aa45","2026-03-19T07:13:48.526000","2026-03-24T14:36:27.523000","69a077bf27e4fc78664e7b18","nataliekap1@gmail.com","false"
+"55000","","Fattening System 3","true","FS3","2","69bba21e8cb3c1a5e9cb6c9a","2026-03-19T07:13:34.648000","2026-03-24T14:36:27.592000","69a077bf27e4fc78664e7b18","nataliekap1@gmail.com","false"
+"55000","","Fattening System 2","true","FS2","1","69bba20fc5786182442f2d7d","2026-03-19T07:13:19.346000","2026-03-24T14:36:27.546000","69a077bf27e4fc78664e7b18","nataliekap1@gmail.com","false"
+"55000","","Fattening System 1","true","FS","0","69b402793e6eb5f2dcbe6eac","2026-03-13T12:26:33.873000","2026-03-24T14:36:27.546000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"40000","","Left Dolev System","true","LDS","8","69b402793e6eb5f2dcbe6ead","2026-03-13T12:26:33.873000","2026-03-24T14:36:27.519000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"11000","","Ancistrus System","true","AS","10","69b402793e6eb5f2dcbe6eae","2026-03-13T12:26:33.873000","2026-03-24T14:36:27.573000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"65000","","Packing House System","true","PHS","7","69b402793e6eb5f2dcbe6eaf","2026-03-13T12:26:33.873000","2026-03-24T14:36:27.517000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"7200","","Scalare System","true","SS","4","69b402793e6eb5f2dcbe6eb0","2026-03-13T12:26:33.873000","2026-03-24T14:36:27.536000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"45000","","Right Dolev System","true","RDS","9","69b402793e6eb5f2dcbe6eb1","2026-03-13T12:26:33.873000","2026-03-24T14:36:27.512000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"95000","","Guppy Broodstock System","true","GBS","5","69b402793e6eb5f2dcbe6eb2","2026-03-13T12:26:33.873000","2026-03-24T14:36:27.516000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"
+"200","","Larvae Room Tank","true","LRT","6","69b402793e6eb5f2dcbe6eb3","2026-03-13T12:26:33.873000","2026-03-24T14:36:27.523000","6939cb8e222f808c3d88aea9","nirmeshulam8@gmail.com","false"

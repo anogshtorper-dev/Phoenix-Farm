@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Scalare",
+    "color": "Silver/Black stripes",
+    "notes": "Angelfish",
+    "id": "6939cd656be03577a0a88efb",
+    "created_date": "2025-12-10T19:43:33.497000",
+    "updated_date": "2025-12-10T19:43:33.497000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Guppy",
+    "color": "Mixed colors",
+    "notes": "Popular ornamental fish",
+    "id": "6939cd656be03577a0a88ef9",
+    "created_date": "2025-12-10T19:43:33.497000",
+    "updated_date": "2025-12-10T19:43:33.497000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  },
+  {
+    "name": "Ancistrus",
+    "color": "Brown/Black",
+    "notes": "Algae eater",
+    "id": "6939cd656be03577a0a88efa",
+    "created_date": "2025-12-10T19:43:33.497000",
+    "updated_date": "2025-12-10T19:43:33.497000",
+    "created_by_id": "6939cb8e222f808c3d88aea9",
+    "created_by": "nirmeshulam8@gmail.com",
+    "is_sample": false
+  }
+]
