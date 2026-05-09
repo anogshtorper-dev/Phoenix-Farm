@@ -128,12 +128,12 @@ export default function SpawningSystemTracking() {
   }, {});
   const sortedDates = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
 
-  const SpawnSection = ({ index }) => {
+  const renderSpawnSection = (index) => {
     const selectedGroup = form[`spawn${index}Group`] || '';
     const linesForGroup = selectedGroup ? getLinesForGroup(selectedGroup) : [];
     const selectedLine  = form[`spawn${index}Line`] || '';
     return (
-      <Card>
+      <Card key={index}>
         <CardHeader className="pb-3"><CardTitle className="text-sm">Spawn {index}</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <div>
@@ -152,7 +152,7 @@ export default function SpawningSystemTracking() {
           </div>
           <div>
             <Label className="text-sm">Number of Tanks</Label>
-            <Input type="text" inputMode="numeric" pattern="[0-9]*" value={form[`spawn${index}NumberOfTanks`]} onChange={e => { const val = e.target.value.replace(/[^0-9]/g, ''); set(`spawn${index}NumberOfTanks`, val); }} placeholder="0" className="text-sm" />
+            <Input type="text" inputMode="numeric" value={form[`spawn${index}NumberOfTanks`]} onChange={e => { const val = e.target.value.replace(/[^0-9]/g, ''); set(`spawn${index}NumberOfTanks`, val); }} placeholder="0" className="text-sm" />
           </div>
         </CardContent>
       </Card>
@@ -318,10 +318,10 @@ export default function SpawningSystemTracking() {
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <SpawnSection index={1} />
-                <SpawnSection index={2} />
-                <SpawnSection index={3} />
-                <SpawnSection index={4} />
+                {renderSpawnSection(1)}
+                {renderSpawnSection(2)}
+                {renderSpawnSection(3)}
+                {renderSpawnSection(4)}
               </div>
               {editingRecord?.createdByName && (
                 <div>
