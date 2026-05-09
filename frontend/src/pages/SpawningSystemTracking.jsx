@@ -34,6 +34,45 @@ const EMPTY_FORM = () => ({
   notes: '',
 });
 
+function SpawnSection({ index, form, onSet, uniqueGroups, getLinesForGroup }) {
+  const selectedGroup = form[`spawn${index}Group`] || '';
+  const linesForGroup = selectedGroup ? getLinesForGroup(selectedGroup) : [];
+  const selectedLine  = form[`spawn${index}Line`] || '';
+  return (
+    <Card>
+      <CardHeader className="pb-3"><CardTitle className="text-sm">Spawn {index}</CardTitle></CardHeader>
+      <CardContent className="space-y-4">
+        <div>
+          <Label className="text-sm">Group (Fish Type)</Label>
+          <Select value={selectedGroup} onValueChange={(v) => { onSet(`spawn${index}Group`, v); onSet(`spawn${index}Line`, ''); }}>
+            <SelectTrigger className="text-sm"><SelectValue placeholder="Select group..." /></SelectTrigger>
+            <SelectContent>{uniqueGroups.map(g => <SelectItem key={g} value={g || 'unknown'}>{g}</SelectItem>)}</SelectContent>
+          </Select>
+        </div>
+        <div>
+          <Label className="text-sm">Line</Label>
+          <Select value={selectedLine} onValueChange={(v) => onSet(`spawn${index}Line`, v)} disabled={!selectedGroup}>
+            <SelectTrigger className="text-sm"><SelectValue placeholder={selectedGroup ? 'Select line...' : 'Select group first'} /></SelectTrigger>
+            <SelectContent>{linesForGroup.map(l => <SelectItem key={l} value={l || 'unknown'}>{l}</SelectItem>)}</SelectContent>
+          </Select>
+        </div>
+        <div>
+          <Label className="text-sm">Number of Tanks</Label>
+          <input
+            type="number"
+            min="1"
+            step="1"
+            value={form[`spawn${index}NumberOfTanks`]}
+            onChange={e => onSet(`spawn${index}NumberOfTanks`, e.target.value)}
+            placeholder="0"
+            className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+          />
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function SpawningSystemTracking() {
   const { toast }   = useToast();
   const { user }    = useAuth();
@@ -111,9 +150,7 @@ export default function SpawningSystemTracking() {
     }
   };
 
-  const toggleDate = (date) => setExpanded(prev => ({ ...prev, [date]: !prev[date] }));
-
-  const filteredRecords = records.filter(r => {
+  const toggleDate = (date) => setExpanded(prev => ({ ...prev, [date]: !prev[date] })); = records.filter(r => {
     const d = (r.date || '').slice(0, 10);
     if (dateFrom && d < dateFrom) return false;
     if (dateTo   && d > dateTo)   return false;
@@ -128,36 +165,6 @@ export default function SpawningSystemTracking() {
   }, {});
   const sortedDates = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
 
-  const renderSpawnSection = (index) => {
-    const selectedGroup = form[`spawn${index}Group`] || '';
-    const linesForGroup = selectedGroup ? getLinesForGroup(selectedGroup) : [];
-    const selectedLine  = form[`spawn${index}Line`] || '';
-    return (
-      <Card key={index}>
-        <CardHeader className="pb-3"><CardTitle className="text-sm">Spawn {index}</CardTitle></CardHeader>
-        <CardContent className="space-y-4">
-          <div>
-            <Label className="text-sm">Group (Fish Type)</Label>
-            <Select value={selectedGroup} onValueChange={(v) => { set(`spawn${index}Group`, v); set(`spawn${index}Line`, ''); }}>
-              <SelectTrigger className="text-sm"><SelectValue placeholder="Select group..." /></SelectTrigger>
-              <SelectContent>{uniqueGroups.map(g => <SelectItem key={g} value={g || 'unknown'}>{g}</SelectItem>)}</SelectContent>
-            </Select>
-          </div>
-          <div>
-            <Label className="text-sm">Line</Label>
-            <Select value={selectedLine} onValueChange={(v) => set(`spawn${index}Line`, v)} disabled={!selectedGroup}>
-              <SelectTrigger className="text-sm"><SelectValue placeholder={selectedGroup ? 'Select line...' : 'Select group first'} /></SelectTrigger>
-              <SelectContent>{linesForGroup.map(l => <SelectItem key={l} value={l || 'unknown'}>{l}</SelectItem>)}</SelectContent>
-            </Select>
-          </div>
-          <div>
-            <Label className="text-sm">Number of Tanks</Label>
-            <Input type="text" inputMode="numeric" value={form[`spawn${index}NumberOfTanks`]} onChange={e => { const val = e.target.value.replace(/[^0-9]/g, ''); set(`spawn${index}NumberOfTanks`, val); }} placeholder="0" className="text-sm" />
-          </div>
-        </CardContent>
-      </Card>
-    );
-  };
 
   return (
     <div className="min-h-screen p-3 md:p-6 bg-white">
@@ -318,10 +325,10 @@ export default function SpawningSystemTracking() {
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {renderSpawnSection(1)}
-                {renderSpawnSection(2)}
-                {renderSpawnSection(3)}
-                {renderSpawnSection(4)}
+                <SpawnSection index={1} form={form} onSet={set} uniqueGroups={uniqueGroups} getLinesForGroup={getLinesForGroup} />
+                <SpawnSection index={2} form={form} onSet={set} uniqueGroups={uniqueGroups} getLinesForGroup={getLinesForGroup} />
+                <SpawnSection index={3} form={form} onSet={set} uniqueGroups={uniqueGroups} getLinesForGroup={getLinesForGroup} />
+                <SpawnSection index={4} form={form} onSet={set} uniqueGroups={uniqueGroups} getLinesForGroup={getLinesForGroup} />
               </div>
               {editingRecord?.createdByName && (
                 <div>
