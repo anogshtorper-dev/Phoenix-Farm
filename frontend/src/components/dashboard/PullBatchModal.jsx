@@ -115,14 +115,10 @@ export default function PullBatchModal({ pond, onClose, onSuccess }) {
   const moveMutation = useMutation({
     mutationFn: async () => {
       const transferDate = new Date().toISOString().split('T')[0];
-      const [, mm, dd]   = transferDate.split('-');
       await Promise.all(selectedBatchIds.map(batchId => {
-        const batch      = sourceBatches.find(b => b.id === batchId);
-        const linePrefix = (batch?.line || '').substring(0, 3);
-        const newCode    = `${dd}${mm}${linePrefix}`;
         return FishBatch.update(batchId, {
           currentTankId: pond.id, currentTankNumber: pond.number,
-          transferDate, stockingDate: transferDate, batchCode: newCode,
+          transferDate, stockingDate: transferDate,
         });
       }));
       const remaining = sourceBatches.filter(b => !selectedBatchIds.includes(b.id));
@@ -133,11 +129,16 @@ export default function PullBatchModal({ pond, onClose, onSuccess }) {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['batches-source', selectedPondId]);
+      const prevPondId = selectedPondId;
+      queryClient.invalidateQueries(['batches-source', prevPondId]);
       queryClient.invalidateQueries(['batches-growout', pond.id]);
       queryClient.invalidateQueries(['batches-nursery', pond.id]);
-      queryClient.invalidateQueries(['batches-nursery', selectedPondId]);
-      queryClient.invalidateQueries(['batches-growout', selectedPondId]);
+      queryClient.invalidateQueries(['batches-nursery', prevPondId]);
+      queryClient.invalidateQueries(['batches-growout', prevPondId]);
+      queryClient.invalidateQueries(['batches-all-active']);
+      setSelectedPondId('');
+      setSelectedBatchIds([]);
+      setSelectedSystemId('');
       onSuccess();
     },
   });
@@ -187,8 +188,13 @@ export default function PullBatchModal({ pond, onClose, onSuccess }) {
               )}
             </div>
           )}
+          {moveMutation.isSuccess && (
+            <div className="px-3 py-2 rounded-md bg-green-50 border border-green-200 text-green-800 text-sm">
+              ✓ Batch pulled successfully. Select another source tank to pull again, or click Done.
+            </div>
+          )}
           <div className="flex justify-end gap-3 pt-2">
-            <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
+            <Button type="button" variant="outline" onClick={onClose}>Done</Button>
             <Button className="bg-teal-600 hover:bg-teal-700" disabled={selectedBatchIds.length === 0 || moveMutation.isPending} onClick={() => moveMutation.mutate()}>
               {moveMutation.isPending ? 'Moving...' : `Pull ${selectedBatchIds.length > 0 ? `(${selectedBatchIds.length})` : ''} Batch`}
             </Button>

@@ -296,7 +296,12 @@ export default function PondDetailModal({ pond, groups, departments, systems, on
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <Label>Batch Codes in this tank</Label>
-                    {isNursery && user?.role === 'admin' && <Button size="sm" className="bg-teal-600 hover:bg-teal-700 h-7 text-xs" onClick={() => setShowAddBatch(true)}><Plus className="w-3 h-3 mr-1" />Add New Batch</Button>}
+                    {isNursery && user?.role === 'admin' && (
+                      <div className="flex gap-2">
+                        <Button size="sm" className="bg-teal-600 hover:bg-teal-700 h-7 text-xs" onClick={() => setShowAddBatch(true)}><Plus className="w-3 h-3 mr-1" />Add New Batch</Button>
+                        <Button size="sm" className="bg-green-600 hover:bg-green-700 h-7 text-xs" onClick={() => setShowPullBatch(true)}>Pull Batch</Button>
+                      </div>
+                    )}
                     {isGrowOut && user?.role === 'admin' && (
                       <div className="flex gap-2">
                         <Button size="sm" variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50 h-7 text-xs" onClick={() => setShowAddBatch(true)}><Plus className="w-3 h-3 mr-1" />Add New Batch</Button>
@@ -506,7 +511,7 @@ export default function PondDetailModal({ pond, groups, departments, systems, on
       </Dialog>
 
       {showAddBatch && <AddBatchModal pond={pond} onClose={() => setShowAddBatch(false)} onSuccess={() => { setShowAddBatch(false); setIsEditing(true); onUpdate(); }} />}
-      {showPullBatch && <PullBatchModal pond={pond} onClose={() => setShowPullBatch(false)} onSuccess={() => { setShowPullBatch(false); onUpdate(); }} />}
+      {showPullBatch && <PullBatchModal pond={pond} onClose={() => { setShowPullBatch(false); onUpdate(); }} onSuccess={() => { onUpdate(); }} />}
       {transferringBatch && <TransferBatchModal batch={transferringBatch} systems={systems} onClose={() => setTransferringBatch(null)} onSuccess={() => { setTransferringBatch(null); onUpdate(); }} />}
 
       {/* Reset confirmation */}
