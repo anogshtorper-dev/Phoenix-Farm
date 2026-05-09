@@ -70,51 +70,67 @@ export default function BatchCodeReport() {
   const buildHistory = () => {
     if (selectedCodes.length === 0) return [];
     const rows = [];
+
     selectedCodes.forEach(code => {
+      // Find the batch(es) with this code — may have changed tank multiple times
       const batches = fishBatches.filter(b => b.batchCode === code);
+
       batches.forEach(batch => {
-        const pond   = ponds.find(p => p.id === batch.currentTankId);
-        const system = pond ? getSystemName(pond.systemId) : '—';
+        // 1. Creation row — use createdAt as the true origin date
+        const createAudit = auditHistory.find(
+          a => a.entityType === 'FishBatch' && a.entityId === batch.id && a.action === 'create'
+        );
+        const createDate = createAudit
+          ? (createAudit.performedAt || createAudit.createdAt || '')
+          : (batch.createdAt || batch.stockingDate || '');
+        const firstTank = createAudit?.after?.currentTankNumber || batch.currentTankNumber || '—';
+        const firstPond = ponds.find(p => p.number === firstTank);
         rows.push({
           batchCode: code, type: 'current',
-          date: batch.stockingDate || batch.created_date || batch.createdAt || '',
-          tankNumber: batch.currentTankNumber || '—', system,
-          group: batch.group || '—', line: batch.line || '—', action: 'Stocked',
-          description: `Batch ${batch.batchId || ''} stocked${batch.fishCount ? ` — ${batch.fishCount} fish` : ''}${batch.notes ? ` | ${batch.notes}` : ''}`,
-          performedBy: '',
+          date: createDate,
+          tankNumber: firstTank,
+          system: firstPond ? getSystemName(firstPond.systemId) : '—',
+          group: batch.group || '—', line: batch.line || '—',
+          action: 'Created',
+          description: `Batch created${batch.fishCount ? ` — ${batch.fishCount} fish` : ''}${batch.notes ? ` | ${batch.notes}` : ''}`,
+          performedBy: createAudit?.performedBy || '',
         });
-        if (batch.transferDate && batch.targetTankNumber) {
+
+        // 2. All transfer/update audit rows for this batch — ordered by date
+        const batchAudits = auditHistory
+          .filter(a => a.entityType === 'FishBatch' && a.entityId === batch.id && a.action !== 'create')
+          .sort((a, b) => new Date(a.performedAt || a.createdAt || 0) - new Date(b.performedAt || b.createdAt || 0));
+
+        batchAudits.forEach(a => {
+          const afterData  = typeof a.after  === 'object' && a.after  ? a.after  : {};
+          const beforeData = typeof a.before === 'object' && a.before ? a.before : {};
+          const tankNum    = afterData.currentTankNumber || beforeData.currentTankNumber || '—';
+          const auditPond  = ponds.find(p => p.number === tankNum);
+          const fromTank   = beforeData.currentTankNumber || '?';
+          const toTank     = afterData.currentTankNumber  || '?';
+          const moved      = fromTank !== toTank && fromTank !== '?' && toTank !== '?';
           rows.push({
-            batchCode: code, type: 'transfer', date: batch.transferDate,
-            tankNumber: batch.targetTankNumber, system,
-            group: batch.group || '—', line: batch.line || '—', action: 'Transfer',
-            description: `Transferred from ${batch.currentTankNumber || '?'} → ${batch.targetTankNumber}`,
-            performedBy: '',
+            batchCode: code, type: 'history',
+            date: a.performedAt || a.createdAt || '',
+            tankNumber: toTank !== '?' ? toTank : tankNum,
+            system: auditPond ? getSystemName(auditPond.systemId) : '—',
+            group: afterData.group || batch.group || '—',
+            line: afterData.line  || batch.line  || '—',
+            action: moved ? 'Transfer' : (a.action || 'Update'),
+            description: moved
+              ? `Moved from ${fromTank} → ${toTank}`
+              : (a.description || `Updated in tank ${tankNum}`),
+            performedBy: a.performedBy || '',
           });
-        }
-        if (batch.currentTankId) {
-          auditHistory
-            .filter(a => a.entityType === 'Pond' && a.entityId === batch.currentTankId)
-            .forEach(a => {
-              // Handle both old (newValue/oldValue string) and new (after/before JSON) schema
-              const afterStr  = typeof a.after === 'string' ? a.after : JSON.stringify(a.after || '');
-              const beforeStr = typeof a.before === 'string' ? a.before : JSON.stringify(a.before || '');
-              const newVal    = a.newValue || afterStr || '';
-              const oldVal    = a.oldValue || beforeStr || '';
-              if (!(a.description || '').includes(code) && !newVal.includes(code) && !oldVal.includes(code)) return;
-              rows.push({
-                batchCode: code, type: 'history',
-                date: a.performedAt || a.created_date || a.createdAt || '',
-                tankNumber: batch.currentTankNumber || '—', system,
-                group: batch.group || '—', line: batch.line || '—',
-                action: a.action || '—', description: a.description || '—',
-                performedBy: a.performedBy || '',
-              });
-            });
-        }
+        });
       });
     });
-    rows.sort((a, b) => a.batchCode !== b.batchCode ? a.batchCode.localeCompare(b.batchCode) : new Date(a.date) - new Date(b.date));
+
+    rows.sort((a, b) =>
+      a.batchCode !== b.batchCode
+        ? a.batchCode.localeCompare(b.batchCode)
+        : new Date(a.date) - new Date(b.date)
+    );
     return rows;
   };
 
