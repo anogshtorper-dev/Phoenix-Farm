@@ -152,7 +152,7 @@ export default function SpawningSystemTracking() {
           </div>
           <div>
             <Label className="text-sm">Number of Tanks</Label>
-            <Input type="number" value={form[`spawn${index}NumberOfTanks`]} onChange={e => set(`spawn${index}NumberOfTanks`, e.target.value)} onWheel={e => e.preventDefault()} placeholder="0" className="text-sm" />
+            <Input type="text" inputMode="numeric" pattern="[0-9]*" value={form[`spawn${index}NumberOfTanks`]} onChange={e => { const val = e.target.value.replace(/[^0-9]/g, ''); set(`spawn${index}NumberOfTanks`, val); }} placeholder="0" className="text-sm" />
           </div>
         </CardContent>
       </Card>

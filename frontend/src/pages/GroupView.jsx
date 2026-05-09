@@ -76,7 +76,7 @@ export default function GroupView() {
   }, [batches]);
 
   const allFishTypes = useMemo(() =>
-    [...new Set(batches.map(b => b.group).filter(Boolean))].sort((a, b) => a.localeCompare(b)),
+    [...new Set(batches.map(b => b.group).filter(Boolean).map(g => g.trim()))].sort((a, b) => a.localeCompare(b)),
     [batches]);
 
   const getPondStatus = (pond) => {
@@ -99,7 +99,7 @@ export default function GroupView() {
   const enrichedPonds = useMemo(() =>
     ponds.filter(p => p.isActive !== false).map(pond => {
       const pondBatches  = batchesByPond[pond.id] || [];
-      const fishTypes    = [...new Set(pondBatches.map(b => b.group).filter(Boolean))];
+      const fishTypes    = [...new Set(pondBatches.map(b => b.group).filter(Boolean).map(g => g.trim()))];
       const lines        = [...new Set(pondBatches.map(b => b.line).filter(Boolean))];
       const dept         = departments.find(d => d.id === pond.departmentId);
       return {
@@ -137,10 +137,10 @@ export default function GroupView() {
     if (selectedDepartmentId !== 'all' && pond.departmentId !== selectedDepartmentId) return false;
     if (selectedSystemId     !== 'all' && pond.systemId     !== selectedSystemId)     return false;
     if (searchTerm && !pond.number.toLowerCase().includes(searchTerm.toLowerCase())) return false;
-    if (selectedFishType !== 'all' && !pond._fishTypes.includes(selectedFishType))   return false;
+    if (selectedFishType !== 'all' && !pond._fishTypes.some(ft => ft.trim().toLowerCase() === selectedFishType.trim().toLowerCase())) return false;
     if (colFilters.pond.length       > 0 && !colFilters.pond.includes(pond.number))  return false;
     if (colFilters.department.length > 0 && !colFilters.department.includes(pond._dept)) return false;
-    if (colFilters.groups.length     > 0 && !colFilters.groups.some(ft => pond._fishTypes.includes(ft))) return false;
+    if (colFilters.groups.length     > 0 && !colFilters.groups.some(ft => pond._fishTypes.some(pft => pft.trim().toLowerCase() === ft.trim().toLowerCase()))) return false;
     if (colFilters.line.length       > 0 && !colFilters.line.some(l => pond._lines.includes(l)))  return false;
     if (colFilters.status.length     > 0 && !colFilters.status.includes(pond._status)) return false;
     if (colFilters.notes.length      > 0 && !colFilters.notes.includes(pond.notes))   return false;
