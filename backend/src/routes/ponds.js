@@ -43,7 +43,19 @@ router.put('/:id', async (req, res, next) => {
   try {
     const before = await prisma.pond.findUnique({ where: { id: req.params.id } });
     if (!before) return res.status(404).json({ error: 'Not found' });
-    const pond = await prisma.pond.update({ where: { id: req.params.id }, data: req.body });
+
+    // Normalize date-only strings (YYYY-MM-DD) to full ISO-8601 DateTime for Prisma DateTime? fields
+    const DATETIME_FIELDS = ['stockingDate', 'lastUpdated'];
+    const data = { ...req.body };
+    DATETIME_FIELDS.forEach(field => {
+      if (data[field] && typeof data[field] === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(data[field])) {
+        data[field] = new Date(data[field] + 'T00:00:00.000Z');
+      } else if (data[field] === '' || data[field] === null) {
+        data[field] = null;
+      }
+    });
+
+    const pond = await prisma.pond.update({ where: { id: req.params.id }, data });
     await logAudit({ req, entityType: 'Pond', entityId: pond.id, action: 'update', before, after: pond, systemId: pond.systemId });
     res.json(pond);
   } catch (err) { next(err); }
