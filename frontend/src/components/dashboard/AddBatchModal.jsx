@@ -2,7 +2,7 @@
 // Changes: Removed base44 import. Species.list, Line.list, FishBatch.list/create,
 // Pond.update, AuditHistory.create replace entity calls.
 // generateBatchId() no longer uses list sort arg — fetches list and sorts client-side.
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -42,16 +42,7 @@ export default function AddBatchModal({ pond, onClose, onSuccess }) {
   });
 
   const batchCode     = generateBatchCode(form.stockingDate, form.line);
-  const speciesIdByName = useMemo(
-    () => Object.fromEntries(species.map(s => [s.name, s.id])),
-    [species]
-  );
-  const filteredLines = lines.filter(l => {
-    if (l.isActive === false) return false;
-    if (!form.group) return false;
-    const sid = speciesIdByName[form.group];
-    return sid ? l.speciesId === sid : l.speciesName === form.group; // fallback for legacy data
-  });
+  const filteredLines = lines.filter(l => l.isActive !== false && l.speciesName === form.group);
 
   const createMutation = useMutation({
     mutationFn: async () => {
